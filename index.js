@@ -1,10 +1,14 @@
 const express = require('express')
 const app = express()
-const port = 5050
+require('dotenv').config()
+const connectDB = require("./config/db")
+const port = process.env.PORT
 
 app.get('/', (req, res) => {
   res.send('Get Started With Mongoose')
 })
+
+connectDB()
 
 app.listen(port, () => {
   console.log(`Mongoose server is running on port : ${port}`)
